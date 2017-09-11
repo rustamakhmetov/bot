@@ -1,5 +1,5 @@
-require 'capybara'
-require './settings'
+# require 'capybara'
+# require './settings'
 # Capybara::Webkit.configure do |config|
 #   config.allow_unknown_urls
 # end
@@ -13,16 +13,6 @@ require './settings'
 # b.button(:name => 'submit').click
 # b.text.include? 'Thank you'
 
-# require 'watir'
-#
-# browser = Watir::Browser.new
-#
-# browser.goto 'watir.com'
-# browser.link(text: 'Documentation').click
-#
-# puts browser.title
-# # => 'Documentation – Watir Project...'
-# browser.close
 class Cabinet
   def initialize(test: false)
     @url = test ? "https://target-sandbox.my.com" : "https://target.my.com"
@@ -60,6 +50,22 @@ class Cabinet
   end
 
 end
+
+require 'watir'
+
+browser = Watir::Browser.new :phantomjs
+
+browser.goto 'https://target-sandbox.my.com'
+File.open('../tmp/google', 'w') {|f| f.write browser.html }
+#browser.link(text: 'LOG IN').click
+
+puts browser.title
+# => 'Documentation – Watir Project...'
+browser.close
+
+exit
+
+
 
 email = "rustamakhmetov@yandex.ru"
 password = "yxe99kyr"
