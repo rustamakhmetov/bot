@@ -1,12 +1,6 @@
 source "https://rubygems.org"
 
-#gem 'capybara', '~> 2.13'
-# gem 'capybara-webkit'
-# gem 'watir-webdriver'
 gem 'watir'
-# gem 'selenium-webdriver'
-# gem 'chromedriver-helper'
-gem 'phantomjs-binaries'
 
 group :development, :test do
   gem "rspec"
