@@ -12,8 +12,28 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
+
+require 'capybara/rspec'
+require 'json_spec'
+#require 'rspec/retry'
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.include Capybara::DSL
+  config.include JsonSpec::Helpers
+
+  config.filter_run focus: true
+  config.run_all_when_everything_filtered = true
+
+  # retry
+  # config.verbose_retry = true
+  # config.display_try_failure_messages = true
+  #
+  # # run retry
+  # config.around :each, :js do |ex|
+  #   ex.run_with_retry retry: 3
+  # end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

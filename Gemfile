@@ -8,5 +8,10 @@ group :development, :test do
 end
 
 group :test do
+  gem 'capybara', '~> 2.15'
   gem 'json_spec'
+  gem 'watir-rspec'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'rspec-retry'
 end
