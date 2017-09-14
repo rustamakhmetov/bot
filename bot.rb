@@ -1,14 +1,20 @@
+#!/usr/bin/env ruby
+
 require './service/cabinet'
 require 'optparse'
 
 class Parser
   def self.parse(custom_options=ARGV)
-    options = {timeout: 30}
+    options = {timeout: 30, show: false}
     opt_parser = OptionParser.new do |opts|
       opts.banner = "Usage: bot.rb email password app_url [options]"
 
       opts.on("-t", "--timeout [INTEGER]", Integer, "Timeout sec. default: 30") do |v|
         options[:timeout] = v
+      end
+
+      opts.on("-s", "--show", "Show browser") do |v|
+        options[:show] = v
       end
 
       opts.on_tail("-h", "--help", "Prints this help") do
@@ -37,5 +43,5 @@ begin
 rescue Errors::UnprocessableEntity => e
   puts "Error: #{e.message}"
 rescue Watir::Wait::TimeoutError
-  puts "Error: Increase timeout, current value = #{Watir.default_timeout} sec."
+  puts "Error: Increase timeout (use option: -t) , current value = #{Watir.default_timeout} sec."
 end

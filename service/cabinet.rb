@@ -10,6 +10,7 @@ class Cabinet
     Watir.default_timeout = args[:timeout] if args[:timeout]
     @url = "https://target.my.com"
     @browser = Watir::Browser.new
+    args[:test] = args[:show] if args[:show]
     unless args[:test]
       @browser.window.resize_to(1,1)
       @browser.window.move_to(3000,3000)

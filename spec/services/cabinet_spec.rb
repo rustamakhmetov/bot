@@ -7,7 +7,7 @@ require 'json'
 
 RSpec.describe Cabinet do
   let(:cab) { Cabinet.new(test:true) }
-  let(:email) { "rustamakhmetov@yandex.ru" }
+  let(:email) { "kubayi@p33.org" }
   let(:password) { "yxe99kyr" }
 
   describe "#login" do
