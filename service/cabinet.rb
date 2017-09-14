@@ -6,10 +6,11 @@ require 'uri'
 class Cabinet
   attr_reader :browser, :data
 
-  def initialize(test: false)
+  def initialize(**args)
+    Watir.default_timeout = args[:timeout] if args[:timeout]
     @url = "https://target.my.com"
     @browser = Watir::Browser.new
-    unless test
+    unless args[:test]
       @browser.window.resize_to(1,1)
       @browser.window.move_to(3000,3000)
     end
